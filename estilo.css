@@ -149,14 +149,14 @@ footer {
             "footer   footer";
     }   
     main{
-        width: 410px;
+        width: 300px;
         margin-right: 90px;
     }
     aside{
-        width: 410px;
+        width: 300px;
         margin-right: 80px;
     }
-    footer{
-        width: 450px;
+    footer, header, nav, section{
+        width: 400px;
     }
 }
