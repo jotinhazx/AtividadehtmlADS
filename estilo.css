@@ -1,155 +1,162 @@
-html,
-body {
-    padding: 0;
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "nav"
+        "section"
+        "main"
+        "aside"
+        "mobile1"
+        "mobile2"
+        "mobile3"
+        "footer";
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+    background-color: #fff;
 }
 
 header {
-    display: grid;
-    width: 1400px;
+    grid-area: header;
+    width: 100%;
+    max-width: 1400px;
     height: 50px;
     background-color: aqua;
-    margin: 50px;
-    justify-content: left;
-    align-items: center;
     display: flex;
+    align-items: center;
+    padding-left: 20px;
 }
 
 p {
-    margin: 10px;
+    margin: 0;
 }
 
 nav {
-    display: grid;
-    width: 1400px;
+    grid-area: nav;
+    width: 100%;
+    max-width: 1400px;
     height: 50px;
     background-color: aqua;
-    margin: 50px;
-    margin-top: -40px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
 }
 
 section {
-    display: grid;
-    width: 1400px;
+    grid-area: section;
+    width: 100%;
+    max-width: 1400px;
     height: 50px;
     background-color: aqua;
-    margin: 50px;
-    margin-top: -40px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
 }
 
 main {
-    width: 300px;
-    background-color: aqua;
+    grid-area: main;
+    width: 100%;
+    max-width: 300px;
     height: 400px;
-    margin-left: 50px;
+    background-color: aqua;
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
+    margin-left: 90px;
 }
 
 aside {
-    width: 1000px;
-    background-color: aqua;
+    grid-area: aside;
+    width: 100%;
+    max-width: 1000px;
     height: 400px;
-    margin-left: 450px;
-    margin-top: -399px;
+    background-color: aqua;
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
+    margin-left: 80px;
 }
 
 footer {
-    display: grid;
-    width: 1400px;
+    grid-area: footer;
+    width: 100%;
+    max-width: 1400px;
     height: 50px;
     background-color: aqua;
-    margin: 50px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
 }
 
-/* Esconde no desktop */
-.mobile-only {
-    display: none;
-    background-color: lightgreen;
-    border-radius: 20px;
-    height: 90px;
-    width: 60px;
-}
 
-/* MOBILE: até 640px */
-@media (max-width: 800px) {
+.mobile-only:nth-of-type(1) { grid-area: mobile1; }
+.mobile-only:nth-of-type(2) { grid-area: mobile2; }
+.mobile-only:nth-of-type(3) { grid-area: mobile3; }
 
-    html,
+
+@media (max-width: 899px) {
     body {
-        padding: 0;
-        margin: 0;
+        grid-template-areas:
+            "header"
+            "nav"
+            "section"
+            "main"
+            "aside"
+            "mobile1"
+            "mobile2"
+            "mobile3"
+            "footer";
     }
 
-    header {
-        display: grid;
-        width: 150px;
-        height: 50px;
-        background-color: aqua;
-        margin: 50px;
-        margin-top: 100px;
-    }
-
-    nav {
-        display: grid;
-        width: 150px;
-        height: 50px;
-        background-color: aqua;
-        margin: 50px;
-        margin-top: -100px;
-        margin-left: 200px;
-    }
-
-    section {
-        display: grid;
-        width: 300px;
-        height: 50px;
-        background-color: aqua;
-        margin: 50px;
-        margin-top: -20px;
-    }
-
-    main {
-        width: 300px;
-        background-color: aqua;
-        margin-left: 50px;
-        height: 100px;
-        margin-top: -20px;
-    }
-
-    aside {
-        display: none;
-    }
-
-    .mobile-only {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 52px;
-        border-radius: 10px;
-        gap: 15px;
-        margin-top: 30px;
-        text-align: center;   
-    }
-
+    header,
+    nav,
+    section,
+    main,
+    aside,
     footer {
-        display: grid;
-        width: 300px;
-        height: 50px;
-        background-color: aqua;
-        margin: 50px;
-        margin-top: 40px;
+        max-width: 100%;
+    }
+}
+
+/* ===== DESKTOP: estrutura lado a lado com grid ===== */
+@media (min-width: 900px) {
+    body {
+        grid-template-columns: 300px 1fr;
+        grid-template-areas:
+            "header   header"
+            "nav      nav"  
+            "section  section"
+            "main     aside"
+            "footer   footer";
+    }   
+    
+}
+@media (max-width: 900px) {
+    body {
+        grid-template-columns: 00px 65vh;
+        grid-template-areas:
+            "header   header"
+            "nav      nav"  
+            "section  section"
+            "main     main"
+            "aside    aside"
+            "footer   footer";
+    }   
+    main{
+        width: 410px;
+        margin-right: 90px;
+    }
+    aside{
+        width: 410px;
+        margin-right: 80px;
+    }
+    footer{
+        width: 450px;
     }
 }
