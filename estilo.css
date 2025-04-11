@@ -2,6 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
 }
 
 body {
@@ -68,7 +75,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 90px;
+    margin-right: -100px;
 }
 
 aside {
@@ -80,7 +87,7 @@ aside {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 80px;
+    margin-right:   -70px;
 }
 
 footer {
@@ -94,12 +101,19 @@ footer {
     align-items: center;
 }
 
+.mobile-only:nth-of-type(1) {
+    grid-area: mobile1;
+}
 
-.mobile-only:nth-of-type(1) { grid-area: mobile1; }
-.mobile-only:nth-of-type(2) { grid-area: mobile2; }
-.mobile-only:nth-of-type(3) { grid-area: mobile3; }
+.mobile-only:nth-of-type(2) {
+    grid-area: mobile2;
+}
 
+.mobile-only:nth-of-type(3) {
+    grid-area: mobile3;
+}
 
+/* MOBILE */
 @media (max-width: 899px) {
     body {
         grid-template-areas:
@@ -124,39 +138,54 @@ footer {
     }
 }
 
-/* ===== DESKTOP: estrutura lado a lado com grid ===== */
+/* DESKTOP */
 @media (min-width: 900px) {
     body {
         grid-template-columns: 300px 1fr;
         grid-template-areas:
             "header   header"
-            "nav      nav"  
+            "nav      nav"
             "section  section"
             "main     aside"
             "footer   footer";
-    }   
-    
+    }
 }
+
+/* ALINHAMENTO PARA MOBILE MAIS CENTRALIZADO */
 @media (max-width: 900px) {
     body {
-        grid-template-columns: 00px 65vh;
+        grid-template-columns: 1fr;
         grid-template-areas:
-            "header   header"
-            "nav      nav"  
-            "section  section"
-            "main     main"
-            "aside    aside"
-            "footer   footer";
-    }   
-    main{
-        width: 300px;
-        margin-right: 90px;
+            "header"
+            "nav"
+            "section"
+            "main"
+            "aside"
+            "footer";
     }
-    aside{
-        width: 300px;
-        margin-right: 80px;
+
+    main,
+    aside,
+    footer,
+    header,
+    nav,
+    section {
+        margin: 0 auto;
+        /* Centraliza horizontalmente */
     }
-    footer, header, nav, section{
-        width: 400px;
+
+    main {
+        width: 300px;
+    }
+
+    aside {
+        width: 300px;
+    }
+
+    footer,
+    header,
+    nav,
+    section {
+        width: 340px;
     }
 }
